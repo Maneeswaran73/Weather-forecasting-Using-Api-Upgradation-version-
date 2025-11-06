@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www.weatherforecast.com</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light">
+    <div class="clouds">
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+        <div class="cloud cloud4"></div>
+        <div class="cloud cloud5"></div>
+    </div>
+
+    <div class="rain" id="rainEffect"></div>
+    <div class="snow" id="snowEffect"></div>
+
+    <main>
+        <h2>
+            <span id="appTitle">Weather Forecasting</span>
+            <div class="controls">
+                <select class="lang-selector" id="langSelector">
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="es">🇪🇸 ES</option>
+                    <option value="fr">🇫🇷 FR</option>
+                    <option value="de">🇩🇪 DE</option>
+                    <option value="hi">🇮🇳 HI</option>
+                    <option value="zh">🇨🇳 ZH</option>
+                </select>
+                <button class="location-btn" id="locationBtn" title="Use my location">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                </button>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="unit-toggle" id="unitToggle">°F</button>
+            </div>
+        </h2>
+       
+        <form>
+            <input type="text" id="name" placeholder="Search for a city..." autocomplete="off">
+            <button type="button" class="voice-btn" id="voiceBtn" title="Voice search">
+                <i class="fa-solid fa-microphone"></i>
+            </button>
+            <button type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
+
+        <div class="favorites-section" id="favoritesSection">
+            <span class="favorites-label">⭐ <span id="favLabel">Favorites:</span></span>
+            <div id="favoritesList"></div>
+        </div>
+
+        <div class="search-history" id="searchHistory"></div>
+       
+        <div class="weather-alert" id="weatherAlert">
+            <h4><i class="fa-solid fa-triangle-exclamation"></i> <span id="alertTitle">Weather Alert</span></h4>
+            <p id="alertMessage"></p>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+       
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p id="loadingText">Loading weather data...</p>
+        </div>
+
+        <section class="result" id="resultSection">
+            <figure class="name">
+                <figcaption>London</figcaption>
+                <img src="https://flagsapi.com/GB/shiny/32.png" alt="Country flag">
+            </figure>
+           
+            <figure class="temperature">
+                <img src="https://openweathermap.org/img/wn/10d@4x.png" alt="Weather icon">
+                <figcaption>
+                    <span>31</span>
+                    <sup>°</sup>C
+                </figcaption>
+                <div class="feels-like"><span id="feelsLikeLabel">Feels like</span> <span id="feelsLike">29</span>°C</div>
+            </figure>
+           
+            <p class="description">overcast clouds</p>
+
+            <button class="add-favorite-btn" id="addFavoriteBtn">
+                <i class="fa-solid fa-star"></i> <span id="addFavText">Add to Favorites</span>
+            </button>
+
+            <div class="hourly-forecast">
+                <h3 id="hourlyTitle">Hourly Forecast</h3>
+                <div class="hourly-container" id="hourlyContainer"></div>
+            </div>
+
+            <div class="additional-info">
+                <div class="info-item">
+                    <i class="fa-solid fa-wind"></i>
+                    <div class="info-content">
+                        <div class="info-label" id="windLabel">Wind Speed</div>
+                        <div class="info-value"><span id="windSpeed">5.2</span> m/s</div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-compass"></i>
+                    <div class="info-content">
+                        <div class="info-label" id="dirLabel">Wind Direction</div>
+                        <div class="info-value"><span id="windDirection">NE</span></div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-sun"></i>
+                    <div class="info-content">
+                        <div class="info-label" id="sunriseLabel">Sunrise</div>
+                        <div class="info-value" id="sunrise">06:30 AM</div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-moon"></i>
+                    <div class="info-content">
+                        <div class="info-label" id="sunsetLabel">Sunset</div>
+                        <div class="info-value" id="sunset">07:45 PM</div>
+                    </div>
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    <span id="cloudsLabel">clouds</span>
+                    <i class="fa-solid fa-cloud"></i>
+                    <span id="clouds">98</span>%
+                </li>
+                <li>
+                    <span id="humidityLabel">humidity</span>
+                    <i class="fa-solid fa-droplet"></i>
+                    <span id="humidity">98</span>%
+                </li>
+                <li>
+                    <span id="pressureLabel">pressure</span>
+                    <i class="fa-solid fa-gauge"></i>
+                    <span id="pressure">1011</span> hPa
+                </li>
+            </ul>
+
+            <div class="forecast-section">
+                <h3 id="forecastTitle">5-Day Forecast</h3>
+                <div class="forecast-container" id="forecastContainer"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
